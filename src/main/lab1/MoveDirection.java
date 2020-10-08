@@ -1,6 +1,6 @@
 package lab1;
 
-public enum Direction {
+public enum MoveDirection {
     FORWARD,
     BACKWARD,
     RIGHT,
