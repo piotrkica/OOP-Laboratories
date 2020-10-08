@@ -11,7 +11,7 @@ public class Vector2dTest {
     public final Vector2d c = new Vector2d(0,0);
 
     @Test
-    public void testEquals() {
+    public void testEquals(){
         Assert.assertNotEquals(x, y);
         Assert.assertEquals(x, new Vector2d(1, 1));
         Assert.assertNotEquals(null, x);
