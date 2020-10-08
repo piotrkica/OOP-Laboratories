@@ -4,11 +4,11 @@ import org.junit.Test;
 
 public class Vector2dTest {
 
-    Vector2d x = new Vector2d(1,1);
-    Vector2d y = new Vector2d(-1,-1);
-    Vector2d a = new Vector2d(1, -1);
-    Vector2d b = new Vector2d(-1,1);
-    Vector2d c = new Vector2d(0,0);
+    public final Vector2d x = new Vector2d(1,1);
+    public final Vector2d y = new Vector2d(-1,-1);
+    public final Vector2d a = new Vector2d(1, -1);
+    public final Vector2d b = new Vector2d(-1,1);
+    public final Vector2d c = new Vector2d(0,0);
 
     @Test
     public void testEquals() {
@@ -61,11 +61,13 @@ public class Vector2dTest {
         Assert.assertNotEquals(x.add(c), y);
     }
 
+    @Test
     public void testSubtract(){
         Assert.assertEquals(x.subtract(x), c);
         Assert.assertNotEquals(x.subtract(y), c);
     }
 
+    @Test
     public void testOpposite(){
         Assert.assertEquals(x.opposite(), y);
         Assert.assertNotEquals(x.opposite(), c);
