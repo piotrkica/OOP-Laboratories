@@ -1,4 +1,4 @@
-package lab1;
+package lab;
 
 public class Vector2d {
     final public int x, y;
@@ -36,7 +36,7 @@ public class Vector2d {
         return new Vector2d(this.x - other.x, this.y - other.y);
     }
 
-    public boolean equals(Object other){
+    public boolean equals(Object other) {
         if (this == other)
             return true;
         if (!(other instanceof Vector2d))
@@ -46,9 +46,8 @@ public class Vector2d {
     }
 
     public Vector2d opposite() {
-        return new Vector2d(- this.x, -this.y);
+        return new Vector2d(-this.x, -this.y);
     }
-
 
 
 }

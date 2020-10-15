@@ -1,13 +1,13 @@
-package lab1;
+package lab;
 
 public enum MapDirection {
     NORTH,
+    EAST,
     SOUTH,
-    WEST,
-    EAST;
+    WEST;
 
-    public String toString(){
-        switch(this){
+    public String toString() {
+        switch (this) {
             case NORTH:
                 return "Północ";
             case SOUTH:
@@ -21,8 +21,8 @@ public enum MapDirection {
         }
     }
 
-    public MapDirection next(){
-        switch(this) {
+    public MapDirection next() {
+        switch (this) {
             case NORTH:
                 return EAST;
             case SOUTH:
@@ -36,8 +36,8 @@ public enum MapDirection {
         }
     }
 
-    public MapDirection previous(){
-        switch(this){
+    public MapDirection previous() {
+        switch (this) {
             case NORTH:
                 return WEST;
             case SOUTH:
@@ -51,16 +51,16 @@ public enum MapDirection {
         }
     }
 
-    public Vector2d toUnitVector(){
-        switch(this){
+    public Vector2d toUnitVector() {
+        switch (this) {
             case NORTH:
-                return new Vector2d(0,1);
+                return new Vector2d(0, 1);
             case SOUTH:
-                return new Vector2d(0,-1);
+                return new Vector2d(0, -1);
             case WEST:
                 return new Vector2d(-1, 0);
             case EAST:
-                return new Vector2d(1,0);
+                return new Vector2d(1, 0);
             default:
                 return null;
         }
