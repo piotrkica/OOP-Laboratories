@@ -25,7 +25,7 @@ public class Animal {
             case LEFT:
                 this.orientation = this.orientation.previous();
                 break;
-            case BACKWARD: // abu uniknąć duplikacji kodu, if-em zmieniam wartości na przeciwne
+            case BACKWARD:
             case FORWARD:
                 Vector2d movement = this.orientation.toUnitVector();
                 if (direction == MoveDirection.BACKWARD) {
@@ -33,7 +33,7 @@ public class Animal {
                 }
                 Vector2d newLocation = this.location.add(movement);
 
-                if (newLocation.precedes(new Vector2d(0, 0)) // dziala ale nielogiczny zapis z follows i precedes
+                if (newLocation.precedes(new Vector2d(0, 0))
                         && newLocation.follows(new Vector2d(4, 4))) {
                     this.location = newLocation;
                 }
