@@ -3,17 +3,13 @@ package lab;
 public class World {
 
     public static void main(String[] args) {
-        String[] directions = {"test", "f", "f", "r", "f", "f", "b", "b", "r", "test"};
-        OptionsParser parser = new OptionsParser();
-        MoveDirection[] parsedDirs = parser.parse(directions);
-        Animal axolotl = new Animal();
-
-        System.out.println(axolotl);
-        for (MoveDirection direction : parsedDirs) {
-            axolotl.move(direction);
-        }
-        System.out.println(axolotl.toString());
-
+        String[] arg = {"f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"};
+        MoveDirection[] directions = new OptionsParser().parse(arg);
+        IWorldMap map = new RectangularMap(10, 5);
+        map.place(new Animal(map));
+        map.place(new Animal(map,new Vector2d(3,4)));
+        map.run(directions);
+        System.out.print(map);
     }
 
     public static void run(MoveDirection[] args) {

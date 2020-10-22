@@ -1,16 +1,37 @@
 package lab;
 
 public class Animal {
-
     private MapDirection orientation = MapDirection.NORTH;
-    private Vector2d location = new Vector2d(2, 2);
+    private Vector2d position = new Vector2d(2, 2);
+    private IWorldMap map;
 
-    public String toString() {
-        return (location + " " + orientation);
+    public Animal(IWorldMap map){
+        this.map = map;
     }
 
-    public Vector2d getLocation() {
-        return this.location;
+    public Animal(IWorldMap map, Vector2d initialPosition){
+        this.map = map;
+        this.position = initialPosition;
+    }
+
+
+    public String toString() {
+        switch(this.orientation){
+            case NORTH:
+                return "N";
+            case EAST:
+                return "E";
+            case SOUTH:
+                return "S";
+            case WEST:
+                return "W";
+            default:
+                return "x";
+        }
+    }
+
+    public Vector2d getPosition() {
+        return this.position;
     }
 
     public MapDirection getOrientation() {
@@ -31,12 +52,12 @@ public class Animal {
                 if (direction == MoveDirection.BACKWARD) {
                     movement = movement.opposite();
                 }
-                Vector2d newLocation = this.location.add(movement);
+                Vector2d newPosition = this.position.add(movement);
 
-                if (newLocation.precedes(new Vector2d(0, 0))
-                        && newLocation.follows(new Vector2d(4, 4))) {
-                    this.location = newLocation;
+                if (this.map.canMoveTo(newPosition)) {
+                    this.position = newPosition;
                 }
+                break;
         }
     }
 
