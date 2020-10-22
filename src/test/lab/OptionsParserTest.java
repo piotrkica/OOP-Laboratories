@@ -11,7 +11,7 @@ public class OptionsParserTest {
     String[] dirs = {"test", "f", "f", "r", "f", "f", "r", "test", "test"};
 
     @Test
-    public void optionsParserTest() {
+    public void testOptionsParser() {
         MoveDirection[] parsedDirs = parser.parse(dirs);
         for (MoveDirection direction : parsedDirs) {
             galago.move(direction);
