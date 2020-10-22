@@ -1,6 +1,5 @@
 package lab;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -36,7 +35,7 @@ public class RectangularMapTest {
     @Test
     public void testObjectAt(){
         map.place(new Animal(map, new Vector2d(4,4)));
-        Assert.assertNull(map.objectAt(new Vector2d(1,1)));
+        assertNull(map.objectAt(new Vector2d(1,1)));
         Animal animal = new Animal(map);
         map.place(animal);
         assertEquals(animal, map.objectAt(new Vector2d(2,2)));
