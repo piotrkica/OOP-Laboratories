@@ -33,7 +33,7 @@ public class AnimalTest {
 
 
     @Test
-    public void testMapAndIntegration() {
+    public void testSingleAnimal() {
         String[] dirs = {"f", "f", "f", "r", "f", "f", "f"};
         MoveDirection[] parsedDirs = parser.parse(dirs);
         for (MoveDirection dir : parsedDirs) {
