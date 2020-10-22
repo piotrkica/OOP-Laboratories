@@ -5,7 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class OptionsParserTest {
-    Animal galago = new Animal();
+    private IWorldMap map = new RectangularMap(4, 4);
+    Animal galago = new Animal(map);
     OptionsParser parser = new OptionsParser();
     String[] dirs = {"test", "f", "f", "r", "f", "f", "r", "test", "test"};
 
@@ -15,7 +16,7 @@ public class OptionsParserTest {
         for (MoveDirection direction : parsedDirs) {
             galago.move(direction);
         }
-        assertEquals(galago.getLocation(), new Vector2d(4, 4));
+        assertEquals(galago.getPosition(), new Vector2d(4, 4));
         assertEquals(galago.getOrientation(), MapDirection.SOUTH);
     }
 }

@@ -6,20 +6,21 @@ import static org.junit.Assert.assertEquals;
 
 
 public class AnimalTest {
-    private Animal wombat = new Animal();
-    OptionsParser parser = new OptionsParser();
+    private IWorldMap map = new RectangularMap(4, 4);
+    private Animal wombat = new Animal(map);
+    private OptionsParser parser = new OptionsParser();
 
     @Test
     public void testToString() {
-        assertEquals("(2, 2) Północ", wombat.toString());
+        assertEquals("N", wombat.toString());
     }
 
     @Test
-    public void testLocation() {
+    public void testPosition() {
         wombat.move(MoveDirection.FORWARD);
-        assertEquals(wombat.getLocation(), new Vector2d(2, 3));
+        assertEquals(wombat.getPosition(), new Vector2d(2, 3));
         wombat.move(MoveDirection.BACKWARD);
-        assertEquals(wombat.getLocation(), new Vector2d(2, 1));
+        assertEquals(wombat.getPosition(), new Vector2d(2, 2));
     }
 
     @Test
@@ -38,7 +39,7 @@ public class AnimalTest {
         for (MoveDirection dir : parsedDirs) {
             wombat.move(dir);
         }
-        assertEquals(wombat.getLocation(), new Vector2d(4, 4));
+        assertEquals(wombat.getPosition(), new Vector2d(4, 4));
         assertEquals(wombat.getOrientation(), MapDirection.EAST);
 
         dirs = new String[]{"b", "b", "b", "b", "b", "l", "b", "b", "b", "b", "b"};
@@ -46,7 +47,7 @@ public class AnimalTest {
         for (MoveDirection dir : parsedDirs) {
             wombat.move(dir);
         }
-        assertEquals(wombat.getLocation(), new Vector2d(0, 0));
+        assertEquals(wombat.getPosition(), new Vector2d(0, 0));
         assertEquals(wombat.getOrientation(), MapDirection.NORTH);
     }
 

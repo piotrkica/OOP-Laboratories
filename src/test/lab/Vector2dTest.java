@@ -30,22 +30,22 @@ public class Vector2dTest {
 
     @Test
     public void testPrecedes() {
-        assertTrue(x.precedes(y));
-        assertFalse(y.precedes(x));
-        assertFalse(y.precedes(a));
-        assertFalse(y.precedes(b));
-        assertTrue(x.precedes(a));
-        assertTrue(x.precedes(b));
+        assertTrue(y.precedes(x));
+        assertFalse(x.precedes(y));
+        assertFalse(a.precedes(y));
+        assertFalse(b.precedes(y));
+        assertTrue(a.precedes(x));
+        assertTrue(b.precedes(x));
     }
 
     @Test
     public void testFollows() {
-        assertTrue(y.follows(x));
-        assertFalse(x.follows(y));
-        assertFalse(x.follows(a));
-        assertFalse(x.follows(b));
-        assertTrue(y.follows(a));
-        assertTrue(y.follows(b));
+        assertTrue(x.follows(y));
+        assertFalse(y.follows(x));
+        assertFalse(a.follows(x));
+        assertFalse(b.follows(x));
+        assertTrue(a.follows(y));
+        assertTrue(b.follows(y));
     }
 
     @Test
