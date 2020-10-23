@@ -36,7 +36,7 @@ public class Animal {
                 if (newLocation.precedes(new Vector2d(0, 0))
                         && newLocation.follows(new Vector2d(4, 4))) {
                     this.location = newLocation;
-                }
+                }   // wzorowo
         }
     }
 
