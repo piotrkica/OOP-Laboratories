@@ -1,4 +1,4 @@
-package lab;
+package lab;    // proszę zmienić nazwę pakietu, żeby chociaż 1 kropka w niej była
 
 public class Animal {
     private MapDirection orientation = MapDirection.NORTH;
@@ -12,7 +12,7 @@ public class Animal {
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.map = map;
         this.position = initialPosition;
-    }
+    }   // zwierzę wisi w próżni - nie dodane do mapy
 
 
     public String toString() {
@@ -26,7 +26,7 @@ public class Animal {
             case WEST:
                 return "W";
             default:
-                return "x";
+                return "x"; // do tej sytuacji nigdy nie powinno dojść; jeśli dojdzie, to Pan nie zauważy, bo metoda zwraca prawidłowy napis
         }
     }
 

@@ -11,7 +11,7 @@ public class RectangularMap implements IWorldMap {
 
     public RectangularMap(int width, int height){
         this.botLeft = new Vector2d(0,0);
-        this.topRight = new Vector2d(width, height);
+        this.topRight = new Vector2d(width, height);    // width - 1
     }
 
     public String toString(){
@@ -28,7 +28,7 @@ public class RectangularMap implements IWorldMap {
 
     @Override
     public boolean place(Animal animal) {
-        if (this.isOccupied(animal.getPosition())){
+        if (this.isOccupied(animal.getPosition())){ // czy isOccupied jest dobrym wyborem?
             return false;
         }
         animals.add(animal);
@@ -55,7 +55,7 @@ public class RectangularMap implements IWorldMap {
     }
 
     @Override
-    public Object objectAt(Vector2d position) {
+    public Object objectAt(Vector2d position) { // uderzająco podobna do isOccupied
         for (Animal animal: animals){
             if (animal.getPosition().equals(position)){
                 return animal;
