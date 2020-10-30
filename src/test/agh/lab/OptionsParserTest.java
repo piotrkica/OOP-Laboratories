@@ -1,4 +1,4 @@
-package lab;
+package agh.lab;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package lab;
+package agh.lab;
 
 public class Vector2d {
     final public int x, y;

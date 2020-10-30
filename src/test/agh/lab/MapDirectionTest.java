@@ -1,4 +1,4 @@
-package lab;
+package agh.lab;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package lab;
+package agh.lab;
 
 import org.junit.Test;
 
@@ -6,9 +6,9 @@ import static org.junit.Assert.assertEquals;
 
 
 public class AnimalTest {
-    private IWorldMap map = new RectangularMap(4, 4);
-    private Animal wombat = new Animal(map);
-    private OptionsParser parser = new OptionsParser();
+    private final IWorldMap map = new RectangularMap(4, 4);
+    private final Animal wombat = new Animal(map);
+    private final OptionsParser parser = new OptionsParser();
 
     @Test
     public void testToString() {
