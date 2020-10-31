@@ -10,7 +10,7 @@ public class RectangularMap extends AbstractWorldMap {
 
     public RectangularMap(int width, int height) {
         this.bottomLeft = new Vector2d(0, 0);
-        this.topRight = new Vector2d(width, height);
+        this.topRight = new Vector2d(width - 1, height - 1);
     }
 
     public Vector2d[] getMapBoundaries() {
