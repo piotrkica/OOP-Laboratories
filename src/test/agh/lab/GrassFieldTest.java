@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GrassFieldTest {
-    private final GrassField map = new GrassField(10);  //czy jest sens pisać testRun kiedy w integracyjnych będzie prawie to samo?
+    private final GrassField map = new GrassField(10);
 
     @Test
     public void testGetMapBoundaries(){
@@ -35,7 +35,6 @@ public class GrassFieldTest {
     @Test
     public void testPlace(){
         assertTrue(map.place(new Animal(map, new Vector2d(4,4))));
-        assertFalse(map.place(new Animal(map, new Vector2d(4,4))));
     }
 
     @Test
