@@ -19,13 +19,6 @@ public class SimulationEngine implements IEngine {
             Animal movedAnimal = (Animal) this.map.objectAt(startingPosition[i%startingPosition.length]);
             movedAnimal.move(directions[i]);
             this.startingPosition[i%startingPosition.length] = movedAnimal.getPosition();
-            //Vector2d position = this.startingPosition[i % startingPosition.length];
-            //if (this.map.objectAt(position) instanceof Animal){
-            //    Animal movedAnimal = (Animal) this.map.objectAt(position);
-            //    movedAnimal.move(directions[i]);
-            //    this.startingPosition[i%this.startingPosition.length] = movedAnimal.getPosition();
-            //}
-
         }
 
     }
