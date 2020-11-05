@@ -1,12 +1,12 @@
 package agh.lab;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 public class RectangularMap extends AbstractWorldMap {
     private final Vector2d bottomLeft;
     private final Vector2d topRight;
-    private List<Animal> animals = super.animals;
+    private Map<Vector2d,Animal> animalsHM = super.animalsHM;
+
 
     public RectangularMap(int topRightX, int topRightY) {
         this.bottomLeft = new Vector2d(0, 0);
@@ -17,6 +17,10 @@ public class RectangularMap extends AbstractWorldMap {
         return new Vector2d[]{bottomLeft, topRight};
     }
 
+    public Map<Vector2d,Animal> getAnimalsHM(){
+        return animalsHM;
+    }
+
     @Override
     public boolean canMoveTo(Vector2d position) {
         return !isOccupied(position) && position.follows(bottomLeft) && position.precedes(topRight);
@@ -24,11 +28,6 @@ public class RectangularMap extends AbstractWorldMap {
 
     @Override
     public Object objectAt(Vector2d position) {
-        for (Animal animal : animals) {
-            if (animal.getPosition().equals(position)) {
-                return animal;
-            }
-        }
-        return null;
+        return animalsHM.get(position);
     }
 }
