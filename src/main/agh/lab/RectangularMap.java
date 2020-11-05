@@ -8,9 +8,9 @@ public class RectangularMap extends AbstractWorldMap {
     private final Vector2d topRight;
     private List<Animal> animals = super.animals;
 
-    public RectangularMap(int width, int height) {
+    public RectangularMap(int topRightX, int topRightY) {
         this.bottomLeft = new Vector2d(0, 0);
-        this.topRight = new Vector2d(width, height);
+        this.topRight = new Vector2d(topRightX, topRightY);
     }
 
     public Vector2d[] getMapBoundaries() {
