@@ -1,7 +1,7 @@
 package agh.lab;
 
 public class Vector2d {
-    final public int x, y;
+    public final int x, y;
 
     public Vector2d(int x, int y) {
         this.x = x;
