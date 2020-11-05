@@ -1,11 +1,11 @@
 package agh.lab;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 abstract public class AbstractWorldMap implements IWorldMap {
     private final MapVisualizer mapVis = new MapVisualizer(this);
-    protected List<Animal> animals = new ArrayList<>();
+    protected Map<Vector2d, Animal> animalsHM = new HashMap<>();
 
     abstract protected Vector2d[] getMapBoundaries();
 
@@ -17,24 +17,14 @@ abstract public class AbstractWorldMap implements IWorldMap {
     @Override
     public boolean place(Animal animal) {
         if (!canMoveTo(animal.getPosition())) {
-            return false;
+            throw new IllegalArgumentException(animal.getPosition() + " field is invalid");
         }
-        animals.add(animal);
+        animalsHM.put(animal.getPosition(), animal);
         return true;
-    }
-
-    @Override
-    public void run(MoveDirection[] directions) {
-        for (int i = 0; i < directions.length; i++) {
-            Animal movedAnimal = animals.get(i % animals.size());
-            movedAnimal.move(directions[i]);
-        }
     }
 
     @Override
     public boolean isOccupied(Vector2d position) {
         return this.objectAt(position) != null;
     }
-
-
 }
