@@ -1,5 +1,6 @@
 package agh.lab;
 
+import java.util.Map;
 
 /**
  * The interface responsible for interacting with the map of the world.
@@ -28,15 +29,6 @@ public interface IWorldMap {
     boolean place(Animal animal);
 
     /**
-     * Move the animal on the map according to the provided move directions. Every
-     * n-th direction should be sent to the n-th animal on the map.
-     *
-     * @param directions
-     *            Array of move directions.
-     */
-    void run(MoveDirection[] directions);
-
-    /**
      * Return true if given position on the map is occupied. Should not be
      * confused with canMove since there might be empty positions where the animal
      * cannot move.
@@ -55,4 +47,7 @@ public interface IWorldMap {
      * @return Object or null if the position is not occupied.
      */
     Object objectAt(Vector2d position);
+
+    Map<Vector2d,Animal> getAnimalsHM();
+
 }
