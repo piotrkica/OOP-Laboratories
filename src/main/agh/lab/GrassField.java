@@ -1,14 +1,12 @@
 package agh.lab;
 
-import java.util.List;
-import java.util.Random;
-import java.util.ArrayList;
+import java.util.*;
 
 import static java.lang.Math.*;
 
 public class GrassField extends AbstractWorldMap {
-    private List<Grass> grassTiles = new ArrayList<>();
-    private List<Animal> animals = super.animals;
+    private Map<Vector2d,Grass> grassTiles = new HashMap<>();
+    protected Map<Vector2d,Animal> animals = super.animalsHM;
 
     public GrassField(int grassCount) {
         Random r = new Random();
@@ -20,24 +18,29 @@ public class GrassField extends AbstractWorldMap {
                 position = new Vector2d(r.nextInt(bound), r.nextInt(bound));
             }
 
-            grassTiles.add(new Grass(position));
+            grassTiles.put(position, new Grass(position));
 
         }
+    }
+
+    public Map<Vector2d,Animal> getAnimalsHM(){
+        return animalsHM;
     }
 
     public Vector2d[] getMapBoundaries() {
         int minX, minY, maxX, maxY;
         minX = minY = maxX = maxY = 0;
 
-        for (Grass grass : grassTiles) {
-            Vector2d tile = grass.getPosition();
+
+        for (Map.Entry<Vector2d,Grass> grass : grassTiles.entrySet()) {
+            Vector2d tile = grass.getKey();
             minX = min(minX, tile.x);
             minY = min(minY, tile.y);
             maxX = max(maxX, tile.x);
             maxY = max(maxY, tile.y);
         }
-        for (Animal animal : animals) {
-            Vector2d tile = animal.getPosition();
+        for (Map.Entry<Vector2d,Animal> animal : animals.entrySet()) {
+            Vector2d tile = animal.getKey();
             minX = min(minX, tile.x);
             minY = min(minY, tile.y);
             maxX = max(maxX, tile.x);
@@ -52,26 +55,22 @@ public class GrassField extends AbstractWorldMap {
     }
 
     public boolean placeGrass(Grass grass) {
-        if ((this.objectAt(grass.getPosition()) instanceof Grass)) {
+        Vector2d position = grass.getPosition();
+        if ((this.objectAt(position) instanceof Grass)) {
+            //throw new IllegalArgumentException(position + " already has grass");
             return false;
         }
-        grassTiles.add(grass);
+        grassTiles.put(position, new Grass(position));
         return true;
     }
 
     @Override
     public Object objectAt(Vector2d position) {
-        for (Animal animal : animals) {
-            if (animal.getPosition().equals(position)) {
-                return animal;
-            }
+        Object animalOrGrass = animals.get(position);
+        if (animalOrGrass != null){
+            return animalOrGrass;
         }
-        for (Grass grass : grassTiles) {
-            if (grass.getPosition().equals(position)) {
-                return grass;
-            }
-        }
-
-        return null;
+        animalOrGrass = grassTiles.get(position);
+        return animalOrGrass;
     }
 }
