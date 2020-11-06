@@ -8,17 +8,17 @@ import static java.lang.Math.*;
 
 public class GrassField extends AbstractWorldMap {
     private List<Grass> grassTiles = new ArrayList<>();
-    private List<Animal> animals = super.animals;
+    private List<Animal> animals = super.animals;   // ta linijka jest niepotrzebna
 
     public GrassField(int grassCount) {
-        Random r = new Random();
+        Random r = new Random();    // proszę unikać jednoliterowych nazw
         int bound = (int) sqrt(grassCount * 10);
 
         for (int i = 0; i < grassCount; i++) {
             Vector2d position = new Vector2d(r.nextInt() % bound, r.nextInt() % bound);
             while (this.isOccupied(position)) {
                 position = new Vector2d(r.nextInt(bound), r.nextInt(bound));
-            }
+            }   // do {} while
 
             grassTiles.add(new Grass(position));
 
@@ -27,7 +27,7 @@ public class GrassField extends AbstractWorldMap {
 
     public Vector2d[] getMapBoundaries() {
         int minX, minY, maxX, maxY;
-        minX = minY = maxX = maxY = 0;
+        minX = minY = maxX = maxY = 0;  // lepiej operować na poziomie wektorów niż współrzędnych
 
         for (Grass grass : grassTiles) {
             Vector2d tile = grass.getPosition();

@@ -5,9 +5,9 @@ import java.util.List;
 
 abstract public class AbstractWorldMap implements IWorldMap {
     private final MapVisualizer mapVis = new MapVisualizer(this);
-    protected List<Animal> animals = new ArrayList<>();
+    protected List<Animal> animals = new ArrayList<>(); // może być finalne
 
-    abstract protected Vector2d[] getMapBoundaries();
+    abstract protected Vector2d[] getMapBoundaries();   // można użyć Pair<>, bo "gwarantuje", że obiekty będą dwa
 
     public String toString() {
         Vector2d[] boundaries = getMapBoundaries();
@@ -36,5 +36,6 @@ abstract public class AbstractWorldMap implements IWorldMap {
         return this.objectAt(position) != null;
     }
 
+    // a objectAt się nie dało tu zaimplementować?
 
 }

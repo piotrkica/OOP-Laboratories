@@ -1,7 +1,7 @@
 package agh.lab;
 
 public class SimulationEngine implements IEngine {
-    MoveDirection[] directions;
+    MoveDirection[] directions; // lepiej te pola mieć prywatne
     IWorldMap map;
     Vector2d[] startingPosition;
 
@@ -10,7 +10,7 @@ public class SimulationEngine implements IEngine {
         this.map = map;
         this.startingPosition = startingPosition;
         for (Vector2d position : startingPosition) {
-            map.place(new Animal(map, position));
+            map.place(new Animal(map, position));   // trzeba sprawdzić, czy place się powiodło
         }
     }
 
