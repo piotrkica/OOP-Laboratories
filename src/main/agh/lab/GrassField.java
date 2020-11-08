@@ -5,24 +5,24 @@ import java.util.*;
 import static java.lang.Math.*;
 
 public class GrassField extends AbstractWorldMap {
-    private Map<Vector2d,Grass> grassTiles = new HashMap<>();
-    protected Map<Vector2d,Animal> animals = super.animalsHM;
+    private final Map<Vector2d,Grass> grassTilesHM = new HashMap<>();
+    private final Map<Vector2d,Animal> animalsHM = super.animalsHM;
 
     public GrassField(int grassCount) {
-        Random r = new Random();
+        Random rand = new Random();
         int bound = (int) sqrt(grassCount * 10);
-
+        Vector2d position;
         for (int i = 0; i < grassCount; i++) {
-            Vector2d position = new Vector2d(r.nextInt() % bound, r.nextInt() % bound);
-            while (this.isOccupied(position)) {
-                position = new Vector2d(r.nextInt(bound), r.nextInt(bound));
-            }
+            do {
+                position = new Vector2d(rand.nextInt() % bound, rand.nextInt() % bound);
+            } while (this.isOccupied(position));
 
-            grassTiles.put(position, new Grass(position));
+            grassTilesHM.put(position, new Grass(position));
 
         }
     }
 
+    @Override
     public Map<Vector2d,Animal> getAnimalsHM(){
         return animalsHM;
     }
@@ -31,15 +31,14 @@ public class GrassField extends AbstractWorldMap {
         int minX, minY, maxX, maxY;
         minX = minY = maxX = maxY = 0;
 
-
-        for (Map.Entry<Vector2d,Grass> grass : grassTiles.entrySet()) {
+        for (Map.Entry<Vector2d,Grass> grass : grassTilesHM.entrySet()) {
             Vector2d tile = grass.getKey();
             minX = min(minX, tile.x);
             minY = min(minY, tile.y);
             maxX = max(maxX, tile.x);
             maxY = max(maxY, tile.y);
         }
-        for (Map.Entry<Vector2d,Animal> animal : animals.entrySet()) {
+        for (Map.Entry<Vector2d,Animal> animal : animalsHM.entrySet()) {
             Vector2d tile = animal.getKey();
             minX = min(minX, tile.x);
             minY = min(minY, tile.y);
@@ -60,17 +59,17 @@ public class GrassField extends AbstractWorldMap {
             //throw new IllegalArgumentException(position + " already has grass");
             return false;
         }
-        grassTiles.put(position, new Grass(position));
+        grassTilesHM.put(position, new Grass(position));
         return true;
     }
 
     @Override
     public Object objectAt(Vector2d position) {
-        Object animalOrGrass = animals.get(position);
+        Object animalOrGrass = animalsHM.get(position);
         if (animalOrGrass != null){
             return animalOrGrass;
         }
-        animalOrGrass = grassTiles.get(position);
+        animalOrGrass = grassTilesHM.get(position);
         return animalOrGrass;
     }
 }
