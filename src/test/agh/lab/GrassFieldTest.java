@@ -1,6 +1,7 @@
 package agh.lab;
 
 import org.junit.Test;
+import org.junit.function.ThrowingRunnable;
 
 import static org.junit.Assert.*;
 
@@ -34,6 +35,11 @@ public class GrassFieldTest {
 
     @Test
     public void testPlace() {
+        Animal wombat = new Animal(map, new Vector2d(3,4));
+        Animal lemur = new Animal(map, new Vector2d(3,4));
+        map.place(wombat);
+        assertThrows(IllegalArgumentException.class, () -> map.place(lemur));
+        assertNotEquals(lemur, map.objectAt(new Vector2d(3,4)));
         assertTrue(map.place(new Animal(map, new Vector2d(4, 4))));
     }
 

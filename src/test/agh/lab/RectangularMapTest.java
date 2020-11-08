@@ -20,6 +20,11 @@ public class RectangularMapTest {
 
     @Test
     public void testPlace() {
+        Animal wombat = new Animal(map, new Vector2d(3,4));
+        Animal lemur = new Animal(map, new Vector2d(3,4));
+        map.place(wombat);
+        assertThrows(IllegalArgumentException.class, () -> map.place(lemur));
+        assertNotEquals(lemur, map.objectAt(new Vector2d(3,4)));
         assertTrue(map.place(new Animal(map, new Vector2d(4, 4))));
     }
 
