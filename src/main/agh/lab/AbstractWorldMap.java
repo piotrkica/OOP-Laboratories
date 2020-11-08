@@ -5,7 +5,7 @@ import java.util.Map;
 
 abstract public class AbstractWorldMap implements IWorldMap {
     private final MapVisualizer mapVis = new MapVisualizer(this);
-    protected Map<Vector2d, Animal> animalsHM = new HashMap<>();
+    protected final Map<Vector2d, Animal> animalsHM = new HashMap<>();
 
     abstract protected Vector2d[] getMapBoundaries();
 
