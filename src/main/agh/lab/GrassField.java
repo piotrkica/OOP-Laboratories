@@ -23,12 +23,12 @@ public class GrassField extends AbstractWorldMap {
     }
 
     @Override
-    public Map<Vector2d,Animal> getAnimalsHM(){
+    public Map<Vector2d,Animal> getAnimalsHM(){ // tak samo jak w RectangularMap
         return animalsHM;
     }
 
     public Vector2d[] getMapBoundaries() {
-        int minX, minY, maxX, maxY;
+        int minX, minY, maxX, maxY; // lepiej operować na wektorach
         minX = minY = maxX = maxY = 0;
 
         for (Map.Entry<Vector2d,Grass> grass : grassTilesHM.entrySet()) {

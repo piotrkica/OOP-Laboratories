@@ -5,10 +5,10 @@ import java.util.Map;
 public class RectangularMap extends AbstractWorldMap {
     private final Vector2d bottomLeft;
     private final Vector2d topRight;
-    private Map<Vector2d,Animal> animalsHM = super.animalsHM;
+    private Map<Vector2d,Animal> animalsHM = super.animalsHM;   // niepotrzebne
 
 
-    public RectangularMap(int topRightX, int topRightY) {
+    public RectangularMap(int topRightX, int topRightY) {   // miało być width i height, a to trochę co innego
         this.bottomLeft = new Vector2d(0, 0);
         this.topRight = new Vector2d(topRightX, topRightY);
     }
@@ -18,7 +18,7 @@ public class RectangularMap extends AbstractWorldMap {
     }
 
     public Map<Vector2d,Animal> getAnimalsHM(){
-        return animalsHM;
+        return animalsHM;   // tego nie może być, bo niszczy hermetyzację
     }
 
     @Override

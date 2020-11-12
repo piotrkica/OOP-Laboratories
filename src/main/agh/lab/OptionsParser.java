@@ -37,7 +37,7 @@ public class OptionsParser {
                     directions[i] = MoveDirection.LEFT;
                     break;
                 default:
-                    return null; // nie zdarzy się
+                    return null; // nie zdarzy się  // to może tu rzucajmy wyjątek, a zaoszczędźmy czas na wstępnej walidacji?
             }
         }
         return directions;
