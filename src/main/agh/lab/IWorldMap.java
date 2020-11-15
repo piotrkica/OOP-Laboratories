@@ -43,6 +43,4 @@ public interface IWorldMap {
      */
     Object objectAt(Vector2d position);
 
-    Map<Vector2d, Animal> getAnimalsHM();
-
 }
