@@ -1,24 +1,12 @@
 package agh.lab;
 
-import java.util.Map;
-
 public class RectangularMap extends AbstractWorldMap {
     private final Vector2d bottomLeft;
     private final Vector2d topRight;
-    private Map<Vector2d,Animal> animalsHM = super.animalsHM;
 
-
-    public RectangularMap(int topRightX, int topRightY) {
-        this.bottomLeft = new Vector2d(0, 0);
+    public RectangularMap(int topRightX, int topRightY) { // miało być width i height ale jak zapytałem czy nie można tym zastąpić
+        this.bottomLeft = new Vector2d(0, 0);       // to uzyskałem zgodę
         this.topRight = new Vector2d(topRightX, topRightY);
-    }
-
-    public Vector2d[] getMapBoundaries() {
-        return new Vector2d[]{bottomLeft, topRight};
-    }
-
-    public Map<Vector2d,Animal> getAnimalsHM(){
-        return animalsHM;
     }
 
     @Override

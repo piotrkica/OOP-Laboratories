@@ -1,33 +1,28 @@
 package agh.lab;
 
-import java.util.Map;
-
 public class SimulationEngine implements IEngine {
     private final MoveDirection[] directions;
     private final IWorldMap map;
-    private final Vector2d[] startingPosition;
-    private final Map<Vector2d, Animal> animalsHM;
+    private final Vector2d[] animalPositions;
 
     public SimulationEngine(MoveDirection[] directions, IWorldMap map, Vector2d[] startingPosition) {
         this.directions = directions;
         this.map = map;
-        this.startingPosition = startingPosition;
+        this.animalPositions = startingPosition;
         for (Vector2d position : startingPosition) {
             map.place(new Animal(map, position));
         }
-        animalsHM = map.getAnimalsHM();
     }
 
     public void run() {
-        int n = startingPosition.length;
+        int n = animalPositions.length;
         for (int i = 0; i < directions.length; i++) {
-            Animal movedAnimal = (Animal) this.map.objectAt(startingPosition[i % n]);
-            Vector2d movedAnimalPosition = movedAnimal.getPosition();
+            Animal movedAnimal = (Animal) this.map.objectAt(animalPositions[i % n]);
+            Vector2d oldPosition = movedAnimal.getPosition();
             movedAnimal.move(directions[i]);
-            this.startingPosition[i % n] = movedAnimal.getPosition();
-            if (!movedAnimalPosition.equals(movedAnimal.getPosition())) {
-                animalsHM.remove(movedAnimalPosition);
-                animalsHM.put(movedAnimal.getPosition(), movedAnimal);
+            this.animalPositions[i % n] = movedAnimal.getPosition();
+            if (!oldPosition.equals(movedAnimal.getPosition())) {
+                movedAnimal.positionChanged(oldPosition, movedAnimal.getPosition());
             }
         }
     }
