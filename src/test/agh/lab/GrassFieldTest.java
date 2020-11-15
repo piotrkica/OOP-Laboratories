@@ -1,30 +1,11 @@
 package agh.lab;
 
 import org.junit.Test;
-import org.junit.function.ThrowingRunnable;
 
 import static org.junit.Assert.*;
 
 public class GrassFieldTest {
     private final GrassField map = new GrassField(10);
-
-    @Test
-    public void testGetMapBoundaries() {
-        map.place(new Animal(map, new Vector2d(99, 100)));
-        map.place(new Animal(map, new Vector2d(100, 99)));  // testy zależą do ilości traw, żadna trawa nie wyjdzie na jakiejś pozycji poza (int sqrt(10*n))
-        map.place(new Animal(map, new Vector2d(-99, -100))); // w tym przypadku poza 10
-        map.place(new Animal(map, new Vector2d(-100, -99)));
-        Vector2d[] minMaxXY = map.getMapBoundaries();
-        assertEquals(new Vector2d(-100, -100), minMaxXY[0]);
-        assertEquals(new Vector2d(100, 100), minMaxXY[1]);
-        map.placeGrass(new Grass(new Vector2d(149, 150)));
-        map.placeGrass(new Grass(new Vector2d(150, 149)));
-        map.placeGrass(new Grass(new Vector2d(-149, -150)));
-        map.placeGrass(new Grass(new Vector2d(-150, -149)));
-        minMaxXY = map.getMapBoundaries();
-        assertEquals(new Vector2d(-150, -150), minMaxXY[0]);
-        assertEquals(new Vector2d(150, 150), minMaxXY[1]);
-    }
 
     @Test
     public void testCanMoveTo() {
@@ -35,11 +16,11 @@ public class GrassFieldTest {
 
     @Test
     public void testPlace() {
-        Animal wombat = new Animal(map, new Vector2d(3,4));
-        Animal lemur = new Animal(map, new Vector2d(3,4));
+        Animal wombat = new Animal(map, new Vector2d(3, 4));
+        Animal lemur = new Animal(map, new Vector2d(3, 4));
         map.place(wombat);
         assertThrows(IllegalArgumentException.class, () -> map.place(lemur));
-        assertNotEquals(lemur, map.objectAt(new Vector2d(3,4)));
+        assertNotEquals(lemur, map.objectAt(new Vector2d(3, 4)));
         assertTrue(map.place(new Animal(map, new Vector2d(4, 4))));
     }
 
