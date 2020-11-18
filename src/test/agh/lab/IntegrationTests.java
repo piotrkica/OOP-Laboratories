@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class IntegrationTests {
-    private final RectangularMap rectMap = new RectangularMap(10, 5);
+    private final RectangularMap rectMap = new RectangularMap(11, 6);
     private final OptionsParser parser = new OptionsParser();
     private final GrassField grassMap = new GrassField(10);
 

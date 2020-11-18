@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 
 public class AnimalTest {
-    private final IWorldMap map = new RectangularMap(4, 4);
+    private final IWorldMap map = new RectangularMap( 5, 5);
     private final Animal wombat = new Animal(map);
     private final OptionsParser parser = new OptionsParser();
 

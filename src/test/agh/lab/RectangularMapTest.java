@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class RectangularMapTest {
-    private final IWorldMap map = new RectangularMap(10, 5);
+    private final IWorldMap map = new RectangularMap(11, 6);
 
     @Test
     public void testCanMoveTo() {

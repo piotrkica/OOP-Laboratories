@@ -4,9 +4,9 @@ public class RectangularMap extends AbstractWorldMap {
     private final Vector2d bottomLeft;
     private final Vector2d topRight;
 
-    public RectangularMap(int topRightX, int topRightY) { // miało być width i height ale jak zapytałem czy nie można tym zastąpić
-        this.bottomLeft = new Vector2d(0, 0);       // to uzyskałem zgodę
-        this.topRight = new Vector2d(topRightX, topRightY);
+    public RectangularMap(int width, int height) {
+        this.bottomLeft = new Vector2d(0, 0);
+        this.topRight = new Vector2d(width - 1, height - 1);
     }
 
     @Override
