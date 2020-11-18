@@ -6,7 +6,7 @@ import java.util.Map;
 abstract public class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
     private final MapVisualizer mapVis = new MapVisualizer(this);
     protected final Map<Vector2d, Animal> animalsHM = new HashMap<>();
-    protected MapBoundary mapBoundaries = new MapBoundary();
+    protected final MapBoundary mapBoundaries = new MapBoundary();
 
     public String toString() {
         return mapVis.draw(mapBoundaries.getBottomLeftBoundary(), mapBoundaries.getTopRightBoundary());
