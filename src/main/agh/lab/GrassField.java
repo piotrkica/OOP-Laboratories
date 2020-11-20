@@ -25,7 +25,7 @@ public class GrassField extends AbstractWorldMap {
         return (!(this.objectAt(position) instanceof Animal));
     }
 
-    public boolean placeGrass(Grass grass) {
+    public boolean placeGrass(Grass grass) {    // to nie powinno być publiczne; wg. założeń trawa rośnie losowo na początku i nie ma możliwości jej dodawania z zewnątrz
         Vector2d position = grass.getPosition();
         if ((this.objectAt(position) instanceof Grass)) {
             //throw new IllegalArgumentException(position + " already has grass");

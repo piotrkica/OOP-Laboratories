@@ -22,7 +22,7 @@ public class SimulationEngine implements IEngine {
             movedAnimal.move(directions[i]);
             this.animalPositions[i % n] = movedAnimal.getPosition();
             if (!oldPosition.equals(movedAnimal.getPosition())) {
-                movedAnimal.positionChanged(oldPosition, movedAnimal.getPosition());
+                movedAnimal.positionChanged(oldPosition, movedAnimal.getPosition());    // to nie jest zadanie dla SimulationEngine'a
             }
         }
     }

@@ -6,10 +6,10 @@ import java.util.Map;
 abstract public class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
     private final MapVisualizer mapVis = new MapVisualizer(this);
     protected final Map<Vector2d, Animal> animalsHM = new HashMap<>();
-    protected final MapBoundary mapBoundaries = new MapBoundary();
+    protected final MapBoundary mapBoundaries = new MapBoundary();  // czy to jest wspólne dla obu map?
 
     public String toString() {
-        return mapVis.draw(mapBoundaries.getBottomLeftBoundary(), mapBoundaries.getTopRightBoundary());
+        return mapVis.draw(mapBoundaries.getBottomLeftBoundary(), mapBoundaries.getTopRightBoundary()); // RectangularMap się miała rysować cała
     }
 
     @Override
