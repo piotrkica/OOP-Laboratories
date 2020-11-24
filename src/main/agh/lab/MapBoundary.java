@@ -1,5 +1,6 @@
 package agh.lab;
 
+import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -39,5 +40,37 @@ public class MapBoundary implements IPositionChangeObserver {
             return new Vector2d(5, 5);
         }
         return new Vector2d(elementsByX.last().x, elementsByY.last().y);
+    }
+}
+
+class Vector2dComparatorX implements Comparator {
+
+    @Override
+    public int compare(Object object1, Object object2){
+        if (!(object1 instanceof Vector2d) || !(object2 instanceof Vector2d)){
+            throw new ClassCastException("There are 1-2 objects in Comparator<Vector2d> that are not Vector2d type");
+        }
+        Vector2d vector1 = (Vector2d) object1;
+        Vector2d vector2 = (Vector2d) object2;
+        if (vector1.x == vector2.x){
+            return vector1.y - vector2.y;
+        }
+        return vector1.x - vector2.x;
+    }
+}
+
+class Vector2dComparatorY implements Comparator {
+
+    @Override
+    public int compare(Object object1, Object object2){
+        if (!(object1 instanceof Vector2d) || !(object2 instanceof Vector2d)){
+            throw new ClassCastException("There are 1-2 objects in Comparator<Vector2d> that are not Vector2d type");
+        }
+        Vector2d vector1 = (Vector2d) object1;
+        Vector2d vector2 = (Vector2d) object2;
+        if (vector1.y == vector2.y){
+            return vector1.x - vector2.x;
+        }
+        return vector1.y - vector2.y;
     }
 }
