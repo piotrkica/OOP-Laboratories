@@ -43,6 +43,7 @@ public class Animal implements IMapElement {
     }
 
     public void move(MoveDirection direction) {
+        Vector2d oldPosition = this.position;
         switch (direction) {
             case RIGHT:
                 this.orientation = this.orientation.next();
@@ -60,6 +61,7 @@ public class Animal implements IMapElement {
 
                 if (this.map.canMoveTo(newPosition)) {
                     this.position = newPosition;
+                    positionChanged(oldPosition, newPosition);
                 }
                 break;
         }

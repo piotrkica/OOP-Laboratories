@@ -21,9 +21,9 @@ public class MapBoundary implements IPositionChangeObserver {
     @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
         elementsByX.remove(oldPosition);
-        elementsByX.add(newPosition);
-
         elementsByY.remove(oldPosition);
+
+        elementsByX.add(newPosition);
         elementsByY.add(newPosition);
     }
 

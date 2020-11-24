@@ -18,12 +18,8 @@ public class SimulationEngine implements IEngine {
         int n = animalPositions.length;
         for (int i = 0; i < directions.length; i++) {
             Animal movedAnimal = (Animal) this.map.objectAt(animalPositions[i % n]);
-            Vector2d oldPosition = movedAnimal.getPosition();
             movedAnimal.move(directions[i]);
             this.animalPositions[i % n] = movedAnimal.getPosition();
-            if (!oldPosition.equals(movedAnimal.getPosition())) {
-                movedAnimal.positionChanged(oldPosition, movedAnimal.getPosition());
-            }
         }
     }
 }
